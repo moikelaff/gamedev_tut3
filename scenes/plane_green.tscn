@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddfr42d3djuns"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_glrkn"]
+[ext_resource type="Texture2D" uid="uid://dint54wgquwvl" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_stand.png" id="2_2kdye"]
+[ext_resource type="Texture2D" uid="uid://ckavd12djpprg" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_duck.png" id="3_uqpol"]
+[ext_resource type="Texture2D" uid="uid://cpp16i6ubi2qc" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_fall.png" id="4_johsy"]
+[ext_resource type="Texture2D" uid="uid://dsdlgggvwlbt5" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_jump.png" id="5_iu5ki"]
+[ext_resource type="Texture2D" uid="uid://7vg2j1865jam" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_idle.png" id="6_uh0hn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to1u2"]
+size = Vector2(62.9734, 78.005)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2lodb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uqpol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_johsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iu5ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uh0hn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_glrkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0.902142)
+scale = Vector2(1.3339, 0.899887)
+shape = SubResource("RectangleShape2D_to1u2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -8)
+scale = Vector2(1.37041, 0.810077)
+texture = ExtResource("2_2kdye")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2lodb")
