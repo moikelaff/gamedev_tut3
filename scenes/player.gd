@@ -26,25 +26,23 @@ var last_right_tap_time       = 0
 
 var is_crouching             = false
 
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
-	# grav
+	# Apply gravity
 	velocity.y += gravity * delta
 
-	# --- Reset jump count if on floor ---
+	# Reset jump count if on floor
 	if is_on_floor():
 		jump_count = 0
 
-	# double jump
-	if Input.is_action_just_pressed("ui_up"):
-		if is_on_floor():
-			velocity.y = jump_speed
-			jump_count = 1
-		elif jump_count < max_jumps:
-			velocity.y = jump_speed
-			jump_count += 1
+	# Handle Jumping
+	if Input.is_action_just_pressed("ui_up") and jump_count < max_jumps:
+		velocity.y = jump_speed
+		jump_count += 1
+		play_animation("jump")
 
-	# detech dash
+	# Detect dash
 	if Input.is_action_just_pressed("ui_left"):
 		var now = Time.get_ticks_msec()
 		if (now - last_left_tap_time) < double_tap_threshold_ms:
@@ -59,21 +57,32 @@ func _physics_process(delta: float) -> void:
 			dashing_direction = 1
 		last_right_tap_time = now
 
-	# apply dash
+	# Apply dash
 	if dash_timer > 0:
 		velocity.x = dashing_direction * dash_speed
 		dash_timer -= delta
+		play_animation("dash")
 	else:
+		# Movement Logic
 		if Input.is_action_pressed("ui_left"):
 			velocity.x = -walk_speed
+			_animated_sprite.flip_h = true  # Flip sprite to left
+			if is_on_floor():
+				play_animation("walk")
 		elif Input.is_action_pressed("ui_right"):
 			velocity.x = walk_speed
+			_animated_sprite.flip_h = false  # Face right
+			if is_on_floor():
+				play_animation("walk")
 		else:
 			velocity.x = 0
+			if is_on_floor():
+				play_animation("idle")
 
-	# crouch
-	if Input.is_action_pressed("ui_down"):
+	# Crouch Handling
+	if Input.is_action_pressed("ui_down") and is_on_floor():
 		is_crouching = true
+		play_animation("crouch")
 	else:
 		is_crouching = false
 
@@ -85,5 +94,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		shape.size = normal_shape_size
 
-   
+	# Move the character
 	move_and_slide()
+
+
+func play_animation(anim_name: String):
+	if _animated_sprite.animation != anim_name:
+		_animated_sprite.stop()  # Stop previous animation
+		_animated_sprite.frame = 0  # Reset frame
+		_animated_sprite.play(anim_name)
+		_animated_sprite.hide()
+		await get_tree().process_frame  # Wait one frame
+		_animated_sprite.show()

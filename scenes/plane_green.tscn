@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddfr42d3djuns"]
+[gd_scene load_steps=10 format=3 uid="uid://ddfr42d3djuns"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_glrkn"]
 [ext_resource type="Texture2D" uid="uid://dint54wgquwvl" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_stand.png" id="2_2kdye"]
 [ext_resource type="Texture2D" uid="uid://ckavd12djpprg" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_duck.png" id="3_uqpol"]
+[ext_resource type="Texture2D" uid="uid://bql03sfm1aj12" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_skid.png" id="4_4ersd"]
 [ext_resource type="Texture2D" uid="uid://cpp16i6ubi2qc" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_fall.png" id="4_johsy"]
 [ext_resource type="Texture2D" uid="uid://dsdlgggvwlbt5" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_jump.png" id="5_iu5ki"]
 [ext_resource type="Texture2D" uid="uid://7vg2j1865jam" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_idle.png" id="6_uh0hn"]
@@ -17,16 +18,54 @@ animations = [{
 "texture": ExtResource("3_uqpol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_johsy")
+"texture": ExtResource("3_uqpol")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4ersd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iu5ki")
+"texture": ExtResource("4_4ersd")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_uh0hn")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_uh0hn")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_iu5ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iu5ki")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_johsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2kdye")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -45,3 +84,4 @@ texture = ExtResource("2_2kdye")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lodb")
+animation = &"walk"

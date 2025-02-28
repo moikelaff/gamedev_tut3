@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsyfep1odrxje"]
 
-[ext_resource type="PackedScene" uid="uid://c3td40g5pdvl4" path="res://Scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c3td40g5pdvl4" path="res://scenes/Ground.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ddfr42d3djuns" path="res://scenes/plane_green.tscn" id="2_2p03c"]
 
 [node name="Root" type="Node2D"]
