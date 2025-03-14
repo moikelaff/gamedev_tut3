@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://7vg2j1865jam" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_idle.png" id="6_uh0hn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_to1u2"]
-size = Vector2(62.9734, 78.005)
+size = Vector2(47.9796, 85.5663)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2lodb"]
 animations = [{
@@ -25,9 +25,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_4ersd")
-}, {
 "duration": 1.0,
 "texture": ExtResource("4_4ersd")
 }],
@@ -70,18 +67,20 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(41, 25)
 script = ExtResource("1_glrkn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0.902142)
+position = Vector2(-1, 2.5)
 scale = Vector2(1.3339, 0.899887)
 shape = SubResource("RectangleShape2D_to1u2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4, -8)
-scale = Vector2(1.37041, 0.810077)
-texture = ExtResource("2_2kdye")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -8)
+scale = Vector2(1, 0.881818)
 sprite_frames = SubResource("SpriteFrames_2lodb")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 0)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=6 format=3 uid="uid://dsyfep1odrxje"]
 
 [ext_resource type="PackedScene" uid="uid://c3td40g5pdvl4" path="res://scenes/Ground.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://ddfr42d3djuns" path="res://scenes/plane_green.tscn" id="2_2p03c"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_haeos"]
+[ext_resource type="PackedScene" uid="uid://ddfr42d3djuns" path="res://scenes/Character.tscn" id="2_2p03c"]
+[ext_resource type="Script" path="res://scenes/GameManager.gd" id="4_8msbj"]
+[ext_resource type="PackedScene" uid="uid://dx7qdnwi8ymb" path="res://scenes/head.tscn" id="5_d6pba"]
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_haeos")
 
 [node name="Ground" parent="." instance=ExtResource("1")]
 position = Vector2(507.708, 363.86)
@@ -14,5 +18,55 @@ position = Vector2(789.149, 294.054)
 [node name="Ground3" parent="." instance=ExtResource("1")]
 position = Vector2(225.95, 294.562)
 
+[node name="Ground4" parent="." instance=ExtResource("1")]
+position = Vector2(1141, 294)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_2p03c")]
-position = Vector2(205, 93)
+position = Vector2(240, 119)
+
+[node name="Ground5" parent="." instance=ExtResource("1")]
+position = Vector2(1509, 527)
+
+[node name="Ground6" parent="." instance=ExtResource("1")]
+position = Vector2(1967, 379)
+
+[node name="Ground7" parent="." instance=ExtResource("1")]
+position = Vector2(2335, 162)
+
+[node name="Ground8" parent="." instance=ExtResource("1")]
+position = Vector2(2741, 376)
+
+[node name="Ground9" parent="." instance=ExtResource("1")]
+position = Vector2(3167, 487)
+
+[node name="Ground10" parent="." instance=ExtResource("1")]
+position = Vector2(3600, 195)
+
+[node name="Ground11" parent="." instance=ExtResource("1")]
+position = Vector2(3169, -156)
+
+[node name="Ground12" parent="." instance=ExtResource("1")]
+position = Vector2(3600, -511)
+
+[node name="Ground13" parent="." instance=ExtResource("1")]
+position = Vector2(3190, -808)
+
+[node name="Ground14" parent="." instance=ExtResource("1")]
+position = Vector2(2832, -816)
+
+[node name="Ground15" parent="." instance=ExtResource("1")]
+position = Vector2(2466, -813)
+
+[node name="Ground16" parent="." instance=ExtResource("1")]
+position = Vector2(2466, -1169)
+
+[node name="Ground17" parent="." instance=ExtResource("1")]
+position = Vector2(2239, -985)
+rotation = -1.54489
+scale = Vector2(1.28, 1)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("4_8msbj")
+
+[node name="Area2D" parent="." instance=ExtResource("5_d6pba")]
+position = Vector2(1104, 148)
